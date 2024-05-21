@@ -12,6 +12,6 @@ public interface AdopterRepository extends JpaRepository<Adopter, Integer> {
 
     List<Adopter> findByNameContainingAndId(String name, int id);
 
-    @Query("SELECT pet.adopter.name FROM Pet pet WHERE pet.adopter.id = :id")
+    @Query("SELECT adopt.name, pet.name FROM Adopter adopt LEFT JOIN Pet pet ON adopt.id = pet.adopter.id WHERE adopt.id = :id")
     List<Object> getBasicInfoByAdopterId(int id);
 }
