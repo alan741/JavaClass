@@ -20,7 +20,7 @@ public class PetController {
 
     @GetMapping("/getByName/{name}")
     public ResponseEntity<?> getByName(@PathVariable String name){
-        List<Pet> pets = this.petService.getByNameAndId(name);
+        List<Pet> pets = this.petService.getByName(name);
         return ResponseEntity.ok(pets);
     }
 

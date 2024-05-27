@@ -3,6 +3,8 @@ package com.expeditors.petapp.models;
 import com.expeditors.petapp.types.BreedType;
 import com.expeditors.petapp.types.PetType;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -10,7 +12,10 @@ import java.time.LocalDate;
 @Entity
 @Getter
 @Setter
-@ToString
+@ToString(exclude="adopter")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Pet {
 
     @Id
@@ -33,5 +38,7 @@ public class Pet {
     @Enumerated
     private BreedType breedType;
 
+    @NotNull
+    @NotEmpty
     private String name;
 }
